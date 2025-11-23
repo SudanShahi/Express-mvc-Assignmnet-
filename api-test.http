@@ -1,0 +1,38 @@
+### Get all cats
+GET http://localhost:3000/api/v1/cat
+
+###
+
+### Get a specific cat by ID
+GET http://localhost:3000/api/v1/cat/9592
+
+###
+
+### Add a cat (JSON - will work for basic data, not file upload)
+POST http://localhost:3000/api/v1/cat
+Content-Type: application/json
+
+{
+  "cat_name": "TestCat",
+  "weight": 5,
+  "owner": 1234,
+  "birthdate": "2023-01-01"
+}
+
+###
+
+### Get all users
+GET http://localhost:3000/api/v1/user
+
+### Update a user (should get JSON confirmation)
+PUT http://localhost:3000/api/v1/user/3609
+Content-Type: application/json
+
+{
+  "name": "Updated Name"
+}
+
+###
+
+### Delete a user (should get JSON confirmation)
+DELETE http://localhost:3000/api/v1/user/3609

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Image Upload Test</title>
+</head>
+<body>
+    <h2>Upload Cat</h2>
+    <form id="catForm" enctype="multipart/form-data">
+    <label for="cat_name">Cat name</label><br>
+    <input id="cat_name" type="text" name="cat_name" placeholder="Cat name" required title="Cat name"><br>
+    <label for="weight">Weight</label><br>
+    <input id="weight" type="number" name="weight" placeholder="Weight" required title="Weight"><br>
+    <label for="owner">Owner</label><br>
+    <input id="owner" type="number" name="owner" placeholder="Owner" required title="Owner"><br>
+    <label for="birthdate">Birthdate</label><br>
+    <input id="birthdate" type="date" name="birthdate" placeholder="Birthdate" required title="Birthdate"><br>
+    <label for="file">Cat image</label><br>
+    <input id="file" type="file" name="file" required title="Cat image" aria-label="Cat image"><br><br>
+    <button type="submit">Submit Cat</button>
+    </form>
+    <div id="result"></div>
+
+  <script>
+    document.getElementById('catForm').addEventListener('submit', async function(event) {
+      event.preventDefault();
+      const formData = new FormData(this);
+      const response = await fetch('http://localhost:3000/api/v1/cat', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await response.json();
+      document.getElementById('result').textContent = JSON.stringify(data);
+    });
+  </script>
+</body>
+</html>
