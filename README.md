@@ -1,35 +1,87 @@
-# Express MVC Assignment — Backend API for React Hooks Course
+This project demonstrates an Express.js REST API backend with full CRUD support for "cats" and "users," featuring well-organised source files and real-world code structure.
+It includes file upload and custom thumbnail middleware using Sharp, and client-side AJAX tests with Fetch API.
 
-This project provides a RESTful API server for managing users and cats, designed to integrate with frontend applications, such as those built in React using hooks. Built using Node.js, Express, and an MVC pattern.
+Features
+Modular Express codebase (src/ folder with api/controllers, api/models, api/routes)
 
-## Features
+RESTful endpoints for Cats and Users with dummy in-memory data
 
-- All CRUD endpoints for cats and users
-- In-memory dummy data models (for quick testing; no DB required)
-- File upload API for cat images with thumbnail generation (Sharp)
-- Clean structure for easy React frontend consumption
-- `.gitignore` excludes `node_modules` and uploaded files
-- API tested with REST Client and upload-test.html (for image uploads)
+File upload endpoint for cat images with Multer
 
-## Usage in a React Project
+Custom middleware (createThumbnail) generates 160x160 PNG thumbnails for uploaded images (using Sharp)
 
-This backend is intended to be consumed by a React frontend, making use of React hooks, such as `useState`, `useEffect`, and `useCallback` for API requests (using `fetch` or axios).  
-Sample usages:
-- Fetch cats via `GET /api/v1/cat` and update with hooks
-- Create and update users or cats from React forms
-- Upload cat images via frontend form using `FormData`
+AJAX frontend demo using plain HTML+JavaScript (upload-test.html)
 
-You can use the endpoints directly in your React components.
+Easy to test with Postman or VSCode REST Client
 
-## Endpoints
+.gitignore excludes node_modules and uploaded images
 
-(Cats/User endpoints as before...)
+Git version control follows proper branching and merging practices
 
-## How to Run
+Folder Structure
+text
+.
+├── src/
+│   ├── api/
+│   │   ├── controllers/
+│   │   ├── models/
+│   │   └── routes/
+│   ├── middlewares.js
+│   ├── app.js
+│   └── index.js
+├── uploads/           # Images, thumbnails (ignored in git)
+├── upload-test.html   # AJAX test page for API
+├── api-test.http      # VSCode REST Client tests
+├── package.json
+├── package-lock.json
+├── .gitignore
+└── README.md
+How to Run
+Install dependencies:
 
-1. Install backend dependencies:
+text
 npm install
+Start the server:
 
-2. Start backend server:
+text
+node src/index.js
+Test API endpoints:
 
-node scr/index.js
+Use Postman or VSCode REST Client (see api-test.http)
+
+Or, use the provided upload-test.html for frontend AJAX testing
+
+API Endpoints
+Cat Endpoints
+Method	Route	Description
+GET	/api/v1/cat	Get all cats
+GET	/api/v1/cat/:id	Get a single cat by ID
+POST	/api/v1/cat	Add a new cat (upload image)
+PUT	/api/v1/cat/:id	Returns {message: "Cat item updated."}
+DELETE	/api/v1/cat/:id	Returns {message: "Cat item deleted."}
+User Endpoints
+Method	Route	Description
+GET	/api/v1/user	Get all users
+GET	/api/v1/user/:id	Get a single user by ID
+POST	/api/v1/user	Add a new user
+PUT	/api/v1/user/:id	Returns {message: "User item updated."}
+DELETE	/api/v1/user/:id	Returns {message: "User item deleted."}
+Custom Thumbnail Middleware
+Implemented in src/middlewares.js as createThumbnail
+
+Generates a 160x160 PNG thumbnail for uploaded images after Multer
+
+Thumbnail saved in uploads/ with filename suffix _thumb
+
+AJAX Example
+Test your endpoints with the included upload-test.html file
+
+Uses Fetch API and async/await for AJAX requests
+
+Version Control & Branching
+Project uses git with main and feature branches (i.e., Assignment4 for middleware)
+
+Changes/merges follow best practice for code collaboration
+
+Author
+Sudan Shahi
