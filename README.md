@@ -1,33 +1,35 @@
-# Express MVC Assignment
+# Express MVC Assignment — Backend API for React Hooks Course
 
-This project implements a RESTful API server to manage users and cats, built using Node.js, Express, and the MVC architectural pattern.
+This project provides a RESTful API server for managing users and cats, designed to integrate with frontend applications, such as those built in React using hooks. Built using Node.js, Express, and an MVC pattern.
 
 ## Features
 
 - All CRUD endpoints for cats and users
-- In-memory dummy data models (no database required)
-- File upload for cat images using Multer
-- Custom middleware: Generates 160x160px PNG thumbnails with Sharp
-- Organized project structure (`src/controllers`, `src/models`, `src/routes`)
+- In-memory dummy data models (for quick testing; no DB required)
+- File upload API for cat images with thumbnail generation (Sharp)
+- Clean structure for easy React frontend consumption
 - `.gitignore` excludes `node_modules` and uploaded files
-- Tested using REST Client (api-test.http) and upload-test.html (for image upload)
+- API tested with REST Client and upload-test.html (for image uploads)
+
+## Usage in a React Project
+
+This backend is intended to be consumed by a React frontend, making use of React hooks, such as `useState`, `useEffect`, and `useCallback` for API requests (using `fetch` or axios).  
+Sample usages:
+- Fetch cats via `GET /api/v1/cat` and update with hooks
+- Create and update users or cats from React forms
+- Upload cat images via frontend form using `FormData`
+
+You can use the endpoints directly in your React components.
 
 ## Endpoints
 
-### Cat Endpoints
+(Cats/User endpoints as before...)
 
-- `GET /api/v1/cat` - Get all cats
-- `GET /api/v1/cat/:id` - Get a cat by ID
-- `POST /api/v1/cat` - Add a cat (with optional image upload)
-- `PUT /api/v1/cat/:id` - Update a cat (returns confirmation)
-- `DELETE /api/v1/cat/:id` - Delete a cat (returns confirmation)
+## How to Run
 
-### User Endpoints
+1. Install backend dependencies:
+npm install
 
-- `GET /api/v1/user` - Get all users
-- `GET /api/v1/user/:id` - Get a user by ID
-- `POST /api/v1/user` - Add a user
-- `PUT /api/v1/user/:id` - Update a user (returns confirmation)
-- `DELETE /api/v1/user/:id` - Delete a user (returns confirmation)
+2. Start backend server:
 
-## Project Structure
+node scr/index.js
